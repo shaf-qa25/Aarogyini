@@ -2,12 +2,12 @@
 
 :root {
   /* Color Palette */
-  --color-primary: #FF6B6B;
-  --color-primary-hover: #fa5252;
+  --color-primary: #E75480;
+  --color-primary-hover: #a3828c;
   --color-secondary: #D4C4FC;
   /* Soft Lavender */
-  --color-secondary-hover: #bfa8fa;
-  --color-background: #FCF9F9;
+  --color-secondary-hover: #C3B4F3;
+  --color-background: #FDFBFC;
   /* Very soft warm background */
   --color-surface: rgba(255, 255, 255, 0.65);
   --color-surface-hover: rgba(255, 255, 255, 0.85);

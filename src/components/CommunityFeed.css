@@ -135,3 +135,43 @@
   opacity: 0.6;
   font-weight: 400;
 }
+
+@media (max-width: 768px) {
+  .community-section {
+    padding: 60px 0;
+  }
+
+  .carousel-container {
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .feed-card-wrapper {
+    height: 380px;
+    /* Slightly shorter cards for smaller screens */
+  }
+
+  /* Disable 3D tilt on mobile for better performance if needed */
+  .carousel-container {
+    perspective: none;
+  }
+
+  /* Make sure the liquid animation doesn't eat battery on mobile */
+  .wavy-border-container {
+    display: none;
+    /* Often hover animations are hidden on mobile */
+  }
+
+  /* Optional: Show border on tap for mobile instead of hover */
+  .feed-card-wrapper:active .wavy-border-container {
+    display: block;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .feed-card-wrapper {
+    min-width: 85vw;
+    /* Almost full width on very small phones */
+  }
+}

@@ -2,12 +2,26 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import './Hero.css';
+import Ballpit from '../ui/Ballpit'; // Import Ballpit instead of BlobCursor
 
 const Hero: React.FC = () => {
   return (
     <section className="hero-section container">
+      {/* Integrated Ballpit Component in the background.
+        We match colors with your pink and lavender theme.
+        Z-index -1 ensures it stays behind content.
+      */}
+      <Ballpit
+        ballCount={20} // Adjusted count for performance and visual balance
+        ballColors={['#E75480', '#C3B4F3', '#FF8E8E']} // Matches your brand colors
+        ballSizes={[15, 20, 25, 30]} // Randomized sizes
+        gravity={0.5} // Lower gravity for a slower, more premium feel
+        restitution={0.8} // Very bouncy
+        zIndex={-1} // Stays behind content
+      />
+
       <div className="hero-grid">
-        {/* Left Side Content */}
+        {/* Left Side Content (Remains Same) */}
         <motion.div
           className="hero-content"
           initial={{ opacity: 0, y: 30 }}
@@ -23,27 +37,22 @@ const Hero: React.FC = () => {
           <p className="hero-subtitle">
             A premium, privacy-first platform designed to understand your body. Track, learn, and grow with confidence.
           </p>
+
           <div className="hero-actions">
-            <button className="btn btn-primary">
-              Download App <ArrowRight size={18} style={{ marginLeft: '8px' }} />
-            </button>
+            <a
+              href="https://play.google.com/store/apps/details?id=YOUR_APP_ID"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-anchor"
+            >
+              <button className="btn btn-primary">
+                Download App <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+              </button>
+            </a>
           </div>
-          {/* Hero Actions
-<div className="hero-actions">
-  <a 
-    href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" 
-    target="_blank" 
-    rel="noopener noreferrer"
-    style={{ textDecoration: 'none' }}
-  >
-    <button className="btn btn-primary">
-      Download App <ArrowRight size={18} style={{ marginLeft: '8px' }} />
-    </button>
-  </a>
-</div> */}
         </motion.div>
 
-        {/* Right Side 3D iPhone Mockup */}
+        {/* Right Side - App Render (Remains Same) */}
         <motion.div
           className="hero-media"
           initial={{ opacity: 0, scale: 0.9 }}
@@ -55,7 +64,6 @@ const Hero: React.FC = () => {
             animate={{ y: [-12, 12, -12] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            {/* Using img for GIF directly for better compatibility */}
             <img
               src="/demo.gif"
               alt="App Demo"
@@ -64,7 +72,7 @@ const Hero: React.FC = () => {
             />
           </motion.div>
 
-          {/* Decorative floating elements */}
+          {/* Decorative Blobs (Remains Same) */}
           <motion.div
             className="floating-blob blob-1"
             animate={{ scale: [1, 1.1, 1], rotate: [0, 90, 0] }}

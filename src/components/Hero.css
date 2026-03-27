@@ -1,38 +1,37 @@
+/* Hero Section Layout */
 .hero-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 200px;
-  padding-bottom: 50px;
-  height: 100vh;
+  min-height: 100vh;
+  /* Changed from height to min-height */
+  padding: 120px 20px 60px;
+  /* Adjusted padding */
+  overflow: hidden;
+  position: relative;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
   align-items: center;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
 
+/* Left Side Content */
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: fit-content;
-  color: var(--color-primary);
-  margin-bottom: 8px;
-  padding: 8px 16px;
+  gap: 16px;
+  z-index: 10;
 }
 
 .hero-title {
-  font-size: 4.5rem;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  /* Responsive font size */
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--color-text-primary);
@@ -40,11 +39,10 @@
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2vw, 1.25rem);
   color: var(--color-text-secondary);
-  max-width: 90%;
-  margin-top: 8px;
-  margin-bottom: 16px;
+  max-width: 540px;
+  margin-bottom: 24px;
 }
 
 .hero-actions {
@@ -53,255 +51,80 @@
   flex-wrap: wrap;
 }
 
+/* Right Side Media */
 .hero-media {
   position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
-  /* For 3D floating effect */
-}
-
-/* 3D iPhone Mockup */
-.iphone-mockup {
-  position: relative;
-  width: 320px;
-  height: 650px;
-  background: #fdfdfd;
-  border-radius: 48px;
-  box-shadow:
-    inset 0 0 0 10px #e1e1e1,
-    inset 0 0 0 12px #fff,
-    0 30px 60px rgba(0, 0, 0, 0.15),
-    0 10px 20px rgba(0, 0, 0, 0.05);
-  padding: 12px;
-  z-index: 10;
-  transform-style: preserve-3d;
+  z-index: 5;
 }
 
 .video-wrapper {
   position: relative;
-  z-index: 5;
-  max-width: 320px;
   width: 100%;
-  /* Making it look like a floating object */
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12));
+  max-width: 300px;
+  /* Standard phone width */
+  margin: 0 auto;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.15));
 }
 
 .hero-video-render {
   width: 100%;
-  height: 88vh;
+  height: auto;
+  /* Changed from 88vh to auto for responsiveness */
   border-radius: 40px;
-  /* iPhone like corners */
   display: block;
+  object-fit: cover;
 }
 
-
-
-.iphone-screen {
-  width: 100%;
-  height: 100%;
-  background: var(--color-background);
-  border-radius: 36px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 48px 20px 20px;
-}
-
-/* Hardware notch */
-.iphone-notch {
-  position: absolute;
-  top: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 30px;
-  background-color: #1a1a1a;
-  border-radius: 0 0 16px 16px;
-  z-index: 20;
-}
-
-/* Hardware Buttons */
-.iphone-button {
-  position: absolute;
-  background-color: #d1d1d1;
-}
-
-.volume-up {
-  width: 4px;
-  height: 40px;
-  left: -4px;
-  top: 150px;
-  border-radius: 4px 0 0 4px;
-}
-
-.volume-down {
-  width: 4px;
-  height: 40px;
-  left: -4px;
-  top: 205px;
-  border-radius: 4px 0 0 4px;
-}
-
-.power {
-  width: 4px;
-  height: 60px;
-  right: -4px;
-  top: 170px;
-  border-radius: 0 4px 4px 0;
-}
-
-/* UI inside Mockup */
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 32px;
-}
-
-.app-greeting {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-}
-
-.app-username {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.app-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-}
-
-/* Tracker UI */
-.cycle-tracker-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 40px;
-}
-
-.cycle-ring {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  background: conic-gradient(var(--color-primary) 0% 4%
-      /* 14/28 days roughly 50%, actually 14 days active etc */
-      , var(--color-secondary) 5% 55%, rgba(0, 0, 0, 0.05) 55% 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.2);
-}
-
-.cycle-inner {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.cycle-day {
-  font-size: 2rem;
-  font-weight: 800;
-  color: var(--color-primary);
-}
-
-.cycle-phase {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-text-secondary);
-}
-
-/* Insights */
-.insights-title {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-}
-
-.insights-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.insight-card {
-  padding: 12px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.insight-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-
-.bg-lavender {
-  background: rgba(212, 196, 252, 0.3);
-}
-
-.bg-coral {
-  background: rgba(255, 107, 107, 0.2);
-}
-
-.insight-text p {
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-.insight-text span {
-  font-size: 0.75rem;
-  color: var(--color-text-secondary);
-}
-
-/* Floating Blobs */
+/* Floating Blobs - Made them more subtle for mobile */
 .floating-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(80px);
   z-index: 1;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .blob-1 {
-  width: 300px;
-  height: 300px;
+  width: 40vw;
+  height: 40vw;
   background: var(--color-primary);
-  top: 10%;
-  left: 20%;
+  top: -10%;
+  right: -5%;
 }
 
 .blob-2 {
-  width: 250px;
-  height: 250px;
+  width: 35vw;
+  height: 35vw;
   background: var(--color-secondary);
   bottom: 0%;
-  right: 15%;
+  left: -5%;
 }
 
-@media (max-width: 968px) {
+/* --- MEDIA QUERIES --- */
+
+/* Tablets and Small Laptops */
+@media (max-width: 1024px) {
+  .hero-grid {
+    gap: 32px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 850px) {
+  .hero-section {
+    padding-top: 100px;
+    /* Reduced top padding */
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 64px;
+    /* Stack elements vertically */
     text-align: center;
+    gap: 60px;
   }
 
   .hero-content {
@@ -309,20 +132,37 @@
   }
 
   .hero-subtitle {
-    max-width: 100%;
+    margin: 0 auto;
   }
 
-  .hero-title {
-    font-size: 3.5rem;
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .video-wrapper {
+    max-width: 260px;
+    /* Slightly smaller phone on mobile */
+  }
+
+  .blob-1,
+  .blob-2 {
+    width: 60vw;
+    height: 60vw;
+    opacity: 0.3;
   }
 }
 
+/* Small Phones */
 @media (max-width: 480px) {
-  .hero-title {
-    font-size: 2.8rem;
+  .hero-section {
+    padding-top: 80px;
   }
 
-  .iphone-mockup {
-    transform: scale(0.9);
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .video-wrapper {
+    max-width: 220px;
   }
 }
