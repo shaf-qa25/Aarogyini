@@ -28,6 +28,19 @@ const Hero: React.FC = () => {
               Download App <ArrowRight size={18} style={{ marginLeft: '8px' }} />
             </button>
           </div>
+          {/* Hero Actions
+<div className="hero-actions">
+  <a 
+    href="https://play.google.com/store/apps/details?id=YOUR_APP_ID" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    style={{ textDecoration: 'none' }}
+  >
+    <button className="btn btn-primary">
+      Download App <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+    </button>
+  </a>
+</div> */}
         </motion.div>
 
         {/* Right Side 3D iPhone Mockup */}
@@ -38,56 +51,17 @@ const Hero: React.FC = () => {
           transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
         >
           <motion.div
-            className="iphone-mockup"
-            animate={{ y: [-15, 15, -15], rotateZ: [-2, 2, -2] }}
+            className="video-wrapper"
+            animate={{ y: [-12, 12, -12] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <div className="iphone-screen">
-              {/* Fake App Header */}
-              <div className="app-header">
-                <div>
-                  <span className="app-greeting">Good Morning,</span>
-                  <p className="app-username">Sarah</p>
-                </div>
-                <div className="app-avatar"></div>
-              </div>
-
-              {/* Circular Cycle Tracker */}
-              <div className="cycle-tracker-wrapper">
-                <div className="cycle-ring">
-                  <div className="cycle-progress"></div>
-                  <div className="cycle-inner glass">
-                    <span className="cycle-day">Day 14</span>
-                    <span className="cycle-phase">Ovulation</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Today's Insights */}
-              <div className="insights-container">
-                <h4 className="insights-title">Today's Insights</h4>
-                <div className="insight-card glass">
-                  <div className="insight-icon bg-lavender">✨</div>
-                  <div className="insight-text">
-                    <p>High Energy Expected</p>
-                    <span>Peak estrogen levels</span>
-                  </div>
-                </div>
-                <div className="insight-card glass">
-                  <div className="insight-icon bg-coral">💧</div>
-                  <div className="insight-text">
-                    <p>Stay Hydrated</p>
-                    <span>Water intake is low</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* iPhone Hardware Details */}
-            <div className="iphone-notch"></div>
-            <div className="iphone-button volume-up"></div>
-            <div className="iphone-button volume-down"></div>
-            <div className="iphone-button power"></div>
+            {/* Using img for GIF directly for better compatibility */}
+            <img
+              src="/demo.gif"
+              alt="App Demo"
+              className="hero-video-render"
+              loading="eager"
+            />
           </motion.div>
 
           {/* Decorative floating elements */}
