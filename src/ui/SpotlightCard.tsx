@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import './SpotlightCard.css';
+import './spotlightCard.css';
 
 interface SpotlightCardProps {
     children: React.ReactNode;
