@@ -1,0 +1,195 @@
+.truth-module {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+}
+
+.truth-header {
+  text-align: center;
+  max-width: 600px;
+}
+
+.truth-dashboard {
+  width: 100%;
+  max-width: 800px;
+  padding: 32px;
+  border-radius: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dashboard-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 16px;
+}
+
+.verified-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.dashboard-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.control-btn {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: all 0.2s;
+}
+
+.control-btn:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+
+.counter {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.truth-content-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.toggle-label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: color 0.3s ease;
+}
+
+.active-myth {
+  color: #FF8E8E;
+}
+
+.active-fact {
+  color: #10B981;
+}
+
+.truth-toggle {
+  width: 80px;
+  height: 40px;
+  border-radius: 999px;
+  background: rgba(255, 142, 142, 0.2);
+  border: 2px solid rgba(255, 142, 142, 0.5);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 4px;
+}
+
+.truth-toggle.toggled {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.toggle-thumb {
+  width: 28px;
+  height: 28px;
+  background: #FF8E8E;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.truth-toggle.toggled .toggle-thumb {
+  transform: translateX(40px);
+  background: #10B981;
+}
+
+.card-display {
+  width: 100%;
+  min-height: 240px;
+  position: relative;
+}
+
+.content-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.05);
+}
+
+.card-icon {
+  flex-shrink: 0;
+}
+
+.card-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.source-citation {
+  margin-top: auto;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  background: rgba(0,0,0,0.04);
+  padding: 8px 16px;
+  border-radius: 999px;
+}
+
+@media (max-width: 768px) {
+  .truth-dashboard {
+    padding: 24px;
+  }
+  
+  .dashboard-top {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .card-text {
+    font-size: 1.25rem;
+  }
+  
+  .content-card {
+    padding: 24px;
+  }
+}
