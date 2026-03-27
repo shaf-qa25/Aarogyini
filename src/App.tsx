@@ -1,10 +1,10 @@
 import React from 'react';
 import Hero from './components/Hero';
-import DetectionSuite from './components/DetectionSuite';
-import TruthModule from './components/TruthModule';
-import CommunityQA from './components/CommunityQA';
+import FeatureGrid from './components/FeatureGrid';
+import MythBuster from './components/MythBuster';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import CommunityFeed from './components/CommunityQA';
 
 const App: React.FC = () => {
   return (
@@ -12,9 +12,9 @@ const App: React.FC = () => {
       <Navbar />
       <main>
         <Hero />
-        <DetectionSuite />
-        <TruthModule />
-        <CommunityQA />
+        <FeatureGrid />
+        <MythBuster />
+        <CommunityFeed />
       </main>
       <Footer />
     </>

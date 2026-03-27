@@ -1,0 +1,137 @@
+.community-section {
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.carousel-container {
+  display: flex;
+  gap: 32px;
+  padding: 60px 24px;
+  perspective: 1200px;
+  /* Crucial for 3D Tilt */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.feed-card-wrapper {
+  min-width: 360px;
+  height: 420px;
+  position: relative;
+  cursor: pointer;
+}
+
+.feed-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 32px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* --- Liquid Wavy Border Logic --- */
+.wavy-border-container {
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 26px;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.feed-card-wrapper:hover .wavy-border-container {
+  opacity: 1;
+}
+
+.wavy-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wavy-svg rect {
+  fill: none;
+  stroke: var(--color-primary);
+  /* Coral Red */
+  stroke-width: 6;
+  stroke-dasharray: 40 25;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 8px var(--color-primary));
+  animation: liquidMove 3s linear infinite;
+}
+
+@keyframes liquidMove {
+  from {
+    stroke-dashoffset: 130;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- Internal Content --- */
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.anonymous-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+.question-body {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.doctor-response-box {
+  background: rgba(45, 212, 191, 0.08);
+  /* Faint Teal */
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.verified-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0d9488;
+  font-size: 0.75rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.glow-dot {
+  width: 8px;
+  height: 8px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #2dd4bf;
+}
+
+.specialist-label {
+  opacity: 0.6;
+  font-weight: 400;
+}

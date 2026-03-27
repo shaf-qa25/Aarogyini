@@ -1,0 +1,49 @@
+/* Main Wrapper */
+.spotlight-card-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--glass-border-radius);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    isolation: isolate;
+    /* Ensures children stay above the glow layer */
+}
+
+/* Hover Effect for the whole card */
+.spotlight-card-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* The Dynamic Glow Layer */
+.spotlight-glow-layer {
+    pointer-events: none;
+    /* Mouse movements pass through this layer */
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    /* --x and --y will be injected via inline styles in React */
+    background: radial-gradient(600px circle at var(--x) var(--y),
+            var(--spotlight-color, rgba(255, 107, 107, 0.15)),
+            transparent 40%);
+}
+
+/* Show glow on hover */
+.spotlight-card-container:hover .spotlight-glow-layer {
+    opacity: 1;
+}
+
+/* Content Container */
+.spotlight-content {
+    position: relative;
+    z-index: 1;
+    /* Content stays above the glow */
+    width: 100%;
+    height: 100%;
+}

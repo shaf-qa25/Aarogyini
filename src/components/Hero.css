@@ -2,9 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 120px;
-  padding-bottom: 80px;
-  min-height: 90vh;
+  padding-top: 200px;
+  padding-bottom: 50px;
+  height: 95vh;
 }
 
 .hero-grid {
@@ -17,114 +17,274 @@
 .hero-content {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
 .hero-badge {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   width: fit-content;
   color: var(--color-primary);
-  margin-bottom: 16px;
+  margin-bottom: 8px;
+  padding: 8px 16px;
 }
 
 .hero-title {
-  font-size: 3.5rem;
-  letter-spacing: -0.02em;
+  font-size: 4.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
   color: var(--color-text-primary);
+  line-height: 1.1;
 }
 
 .hero-subtitle {
   font-size: 1.25rem;
   color: var(--color-text-secondary);
   max-width: 90%;
+  margin-top: 8px;
+  margin-bottom: 16px;
 }
 
 .hero-actions {
   display: flex;
   gap: 16px;
-  margin-top: 16px;
   flex-wrap: wrap;
 }
 
 .hero-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1000px;
+  /* For 3D floating effect */
 }
 
-.video-placeholder {
+/* 3D iPhone Mockup */
+.iphone-mockup {
+  position: relative;
+  width: 320px;
+  height: 650px;
+  background: #fdfdfd;
+  border-radius: 48px;
+  box-shadow:
+    inset 0 0 0 10px #e1e1e1,
+    inset 0 0 0 12px #fff,
+    0 30px 60px rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.05);
+  padding: 12px;
+  z-index: 10;
+  transform-style: preserve-3d;
+}
+
+.iphone-screen {
   width: 100%;
   height: 100%;
-  border-radius: 32px;
+  background: var(--color-background);
+  border-radius: 36px;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.1) 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 48px 20px 20px;
 }
 
-.video-overlay {
+/* Hardware notch */
+.iphone-notch {
   position: absolute;
-  inset: 0;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 30px;
+  background-color: #1a1a1a;
+  border-radius: 0 0 16px 16px;
+  z-index: 20;
+}
+
+/* Hardware Buttons */
+.iphone-button {
+  position: absolute;
+  background-color: #d1d1d1;
+}
+
+.volume-up {
+  width: 4px;
+  height: 40px;
+  left: -4px;
+  top: 150px;
+  border-radius: 4px 0 0 4px;
+}
+
+.volume-down {
+  width: 4px;
+  height: 40px;
+  left: -4px;
+  top: 205px;
+  border-radius: 4px 0 0 4px;
+}
+
+.power {
+  width: 4px;
+  height: 60px;
+  right: -4px;
+  top: 170px;
+  border-radius: 0 4px 4px 0;
+}
+
+/* UI inside Mockup */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.app-greeting {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.app-username {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.app-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+}
+
+/* Tracker UI */
+.cycle-tracker-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.cycle-ring {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: conic-gradient(var(--color-primary) 0% 4%
+      /* 14/28 days roughly 50%, actually 14 days active etc */
+      , var(--color-secondary) 5% 55%, rgba(0, 0, 0, 0.05) 55% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(255, 107, 107, 0.2);
+}
+
+.cycle-inner {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  color: var(--color-secondary);
-  font-weight: 500;
 }
 
-.play-button {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background-color: var(--color-surface);
-  backdrop-filter: blur(10px);
+.cycle-day {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.cycle-phase {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+/* Insights */
+.insights-title {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.insights-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.insight-card {
+  padding: 12px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.insight-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  cursor: pointer;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
+  font-size: 1.2rem;
 }
 
-.play-button:hover {
-  transform: scale(1.1);
+.bg-lavender {
+  background: rgba(212, 196, 252, 0.3);
 }
 
+.bg-coral {
+  background: rgba(255, 107, 107, 0.2);
+}
+
+.insight-text p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.insight-text span {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+/* Floating Blobs */
 .floating-blob {
   position: absolute;
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
-  filter: blur(40px);
-  z-index: -1;
-  opacity: 0.6;
+  filter: blur(60px);
+  z-index: 1;
+  opacity: 0.5;
 }
 
 .blob-1 {
+  width: 300px;
+  height: 300px;
   background: var(--color-primary);
-  top: -20px;
-  left: -20px;
+  top: 10%;
+  left: 20%;
 }
 
 .blob-2 {
+  width: 250px;
+  height: 250px;
   background: var(--color-secondary);
-  bottom: -40px;
-  right: -40px;
+  bottom: 0%;
+  right: 15%;
 }
 
 @media (max-width: 968px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 64px;
     text-align: center;
   }
-  
+
   .hero-content {
     align-items: center;
   }
@@ -134,6 +294,16 @@
   }
 
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+
+  .iphone-mockup {
+    transform: scale(0.9);
   }
 }

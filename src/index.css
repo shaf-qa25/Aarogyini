@@ -2,16 +2,19 @@
 
 :root {
   /* Color Palette */
-  --color-primary: #FF8E8E;
-  --color-primary-hover: #ff7575;
-  --color-secondary: #6C5DD3;
-  --color-secondary-hover: #5a4bbf;
-  --color-background: #F8F9FA;
-  --color-surface: rgba(255, 255, 255, 0.6);
-  --color-surface-hover: rgba(255, 255, 255, 0.8);
-  --color-text-primary: #1A1A2E;
+  --color-primary: #FF6B6B;
+  --color-primary-hover: #fa5252;
+  --color-secondary: #D4C4FC;
+  /* Soft Lavender */
+  --color-secondary-hover: #bfa8fa;
+  --color-background: #FCF9F9;
+  /* Very soft warm background */
+  --color-surface: rgba(255, 255, 255, 0.65);
+  --color-surface-hover: rgba(255, 255, 255, 0.85);
+  --color-text-primary: #1E1E24;
+  /* Deep Charcoal */
   --color-text-secondary: #6B7280;
-  --color-border: rgba(255, 255, 255, 0.5);
+  --color-border: rgba(255, 255, 255, 0.6);
 
   /* Glassmorphism Variables */
   --glass-blur: 16px;
@@ -33,15 +36,22 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   /* Soft mesh gradient background */
-  background-image: 
-    radial-gradient(at 40% 20%, hsla(348,100%,78%,0.15) 0px, transparent 50%),
-    radial-gradient(at 80% 0%, hsla(248,60%,60%,0.15) 0px, transparent 50%),
-    radial-gradient(at 0% 50%, hsla(348,100%,78%,0.1) 0px, transparent 50%),
-    radial-gradient(at 80% 100%, hsla(248,60%,60%,0.1) 0px, transparent 50%);
+  background-image:
+    radial-gradient(at 20% 20%, hsla(257, 83%, 91%, 0.6) 0px, transparent 50%),
+    /* Lavender */
+    radial-gradient(at 80% 80%, hsla(20, 100%, 85%, 0.5) 0px, transparent 50%),
+    /* Soft Peach */
+    radial-gradient(at 0% 100%, hsla(257, 83%, 91%, 0.4) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(20, 100%, 85%, 0.4) 0px, transparent 50%);
   background-attachment: fixed;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 700;
   line-height: 1.2;
 }
@@ -67,11 +77,9 @@ a {
 
 .glass-panel {
   isolation: isolate;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.7) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.3) 100%);
   backdrop-filter: blur(var(--glass-blur));
   -webkit-backdrop-filter: blur(var(--glass-blur));
   border: 1px solid rgba(255, 255, 255, 0.8);

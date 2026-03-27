@@ -1,0 +1,117 @@
+.myth-section {
+  padding: 25px 0;
+  position: relative;
+}
+
+
+
+.myth-header {
+  margin-bottom: 50px;
+  max-width: 600px;
+}
+
+
+.section-title {
+  font-size: 2.7rem;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+/* Horizontal Scroll logic */
+.myth-scroll-area {
+  overflow-x: auto;
+  padding: 20px 0 40px 0;
+  scrollbar-width: none;
+  /* Firefox */
+  cursor: grab;
+}
+
+.myth-scroll-area::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.myth-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  /* Important for horizontal scroll */
+  padding-left: 2px;
+}
+
+/* Specific Card Styling */
+.myth-card {
+  width: 340px;
+  min-height: 400px;
+  display: flex;
+}
+
+.myth-card-content {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.myth-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.myth-statement {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.myth-divider {
+  height: 1px;
+  width: 50px;
+  background: var(--color-primary);
+  margin: 30px 0;
+  opacity: 0.3;
+}
+
+.fact-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #0d9488;
+  /* Teal for Fact */
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.fact-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .myth-card {
+    width: 290px;
+    min-height: 380px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+}

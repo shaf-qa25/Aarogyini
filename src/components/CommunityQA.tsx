@@ -1,101 +1,97 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { MessageSquare, ArrowBigUp, ArrowBigDown, Share2, Award, ShieldCheck } from 'lucide-react';
-import './CommunityQA.css';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { ShieldCheck, MessageCircle } from 'lucide-react';
+import './CommunityFeed.css';
 
-const CommunityQA: React.FC = () => {
+// 1. Mock Data add kiya (ya ise file ke bahar se import karo)
+const MOCK_FEED = [
+  { id: 1, question: "How to manage skin sensitivity with retinol?", answer: "Start twice a week and use a thick ceramide moisturizer.", doctor: "Dr. Ananya Iyer", topic: "Skin" },
+  { id: 2, question: "Natural alternatives to morning caffeine?", answer: "Try cold-pressed juice or 5-min stretching.", doctor: "Dr. Rohan Shah", topic: "Wellness" },
+  { id: 3, question: "Is 6 hours of sleep enough for athletes?", answer: "Ideally no. Muscle recovery needs 7.5 to 8 hours.", doctor: "Dr. Kabir Singh", topic: "Fitness" }
+];
+
+const CommunityCard = ({ item }: { item: any }) => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  // Tilt ranges: thoda subtle rakha hai taaki content readable rahe
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x.set((e.clientX - rect.left) / rect.width - 0.5);
+    y.set((e.clientY - rect.top) / rect.height - 0.5);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
   return (
-    <section className="community-qa section container">
-      <div className="section-header">
-        <h2 className="section-title">Anonymous <span className="text-gradient">Community</span></h2>
-        <p className="section-subtitle">Real questions, clinical answers.</p>
-      </div>
+    <motion.div
+      className="feed-card-wrapper"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+    >
+      <div className="feed-card glass-panel" style={{ transformStyle: "preserve-3d" }}>
 
-      <div className="community-grid">
-        {/* Left Side: Info */}
-        <motion.div 
-          className="community-info"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h3>A safe space for your health queries</h3>
-          <p>
-            Join thousands of women discussing symptoms, treatments, and experiences anonymously. 
-            All clinical questions are answered by our panel of certified gynecologists.
-          </p>
-          <ul className="benefits-list">
-            <li><ShieldCheck size={20} className="list-icon" /> 100% Anonymous profiles</li>
-            <li><Award size={20} className="list-icon gold" /> Doctor-verified responses</li>
-            <li><MessageSquare size={20} className="list-icon" /> Supportive community</li>
-          </ul>
-          <button className="btn btn-primary mt-4">Join Discussion</button>
-        </motion.div>
+        {/* Animated Wavy Border */}
+        <div className="wavy-border-container">
+          <svg className="wavy-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <rect x="0" y="0" width="100" height="100" rx="8" />
+          </svg>
+        </div>
 
-        {/* Right Side: Reddit style Card */}
-        <motion.div 
-          className="community-preview"
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="post-card glass-panel">
-            <div className="post-sidebar">
-              <button className="vote-btn active"><ArrowBigUp size={24} /></button>
-              <span className="vote-count">1.2k</span>
-              <button className="vote-btn"><ArrowBigDown size={24} /></button>
+        {/* Level 1: Question (Depth: 40px) */}
+        <div className="card-content-section" style={{ transform: "translateZ(40px)", transformStyle: "preserve-3d" }}>
+          <div className="question-header">
+            <span className="anonymous-tag"><MessageCircle size={12} /> Anonymous</span>
+            <span className="glass-badge">{item.topic}</span>
+          </div>
+          <p className="question-body">"{item.question}"</p>
+        </div>
+
+        {/* Level 2: Response Box (Depth: 80px for parallax) */}
+        <div style={{ transform: "translateZ(80px)" }}>
+          <div className="doctor-response-box">
+            <div className="verified-label">
+              <div className="glow-dot"></div>
+              <ShieldCheck size={14} /> Verified Response
             </div>
-            
-            <div className="post-content">
-              <div className="post-meta">
-                <div className="avatar bg-gradient"></div>
-                <span className="username">Anonymous_User_42</span>
-                <span className="time">· 4 hours ago</span>
-                <span className="glass-badge tag-health">Cycle Health</span>
-              </div>
-              
-              <h4 className="post-title">Is my cycle length normal? It suddenly changed from 28 to 35 days.</h4>
-              <p className="post-body">
-                I'm 24 and my period has always been exactly 28 days. For the last 3 months, it's been stretching to 35-36 days. Should I be worried about PCOS?
-              </p>
-              
-              <div className="post-actions">
-                <button className="action-btn"><MessageSquare size={18} /> 48 Comments</button>
-                <button className="action-btn"><Share2 size={18} /> Share</button>
-              </div>
-
-              {/* Doctor Response */}
-              <div className="doctor-response glass-panel highlighted">
-                <div className="response-header">
-                  <div className="doctor-info">
-                    <div className="doctor-avatar">
-                      <img src="https://ui-avatars.com/api/?name=Dr+Sarah&background=F8F9FA&color=6C5DD3" alt="Dr. Sarah" />
-                    </div>
-                    <div>
-                      <span className="doctor-name">Dr. Sarah Jenkins</span>
-                      <span className="doctor-title">Board Certified Gynecologist</span>
-                    </div>
-                  </div>
-                  <div className="gold-badge">
-                    <Award size={16} /> Verified clinical response
-                  </div>
-                </div>
-                <div className="response-body">
-                  <p>
-                    A shift from 28 to 35 days is generally considered within the normal adult range (21-35 days). 
-                    However, sudden changes can be triggered by stress, sleep disruptions, or new medications. 
-                    If it continues for another cycle alongside other symptoms like acne or hair thinning, I'd recommend a hormonal panel.
-                  </p>
-                </div>
-              </div>
+            <p className="response-text">"{item.answer}"</p>
+            <div className="doctor-name-tag">
+              {item.doctor} <span className="specialist-label">• Specialist</span>
             </div>
           </div>
-        </motion.div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+const CommunityFeed = () => {
+  return (
+    <section className="community-section" id="community">
+      <div className="container">
+        <div className="feed-intro">
+          <h2 className="section-title">Community <span className="text-gradient">Feed</span></h2>
+          <p className="section-subtitle">Real questions, verified expert answers.</p>
+        </div>
+
+        <div className="carousel-container">
+          {MOCK_FEED.map((item) => (
+            <CommunityCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
 
-export default CommunityQA;
+export default CommunityFeed;

@@ -21,9 +21,9 @@ const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', href: '#' },
-    { name: 'Detection Engine', href: '#detection' },
-    { name: 'Truth Module', href: '#truth' },
-    { name: 'Anonymous QA', href: '#community' },
+    { name: 'Why Us', href: '#features' },
+    { name: 'Myths', href: '#truth' },
+    { name: 'FAQ', href: '#community' },
   ];
 
   return (
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
               </li>
             ))}
           </ul>
-          <button className="btn btn-primary nav-btn">Get Started</button>
+          <button className="btn btn-primary nav-btn">Download Now</button>
         </nav>
 
         <button className="mobile-menu-btn" onClick={toggleMobileMenu}>
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
               </li>
             ))}
             <li className="mobile-nav-item">
-              <button className="btn btn-primary mobile-nav-btn">Get Started</button>
+              <button className="btn btn-primary mobile-nav-btn">Download Now</button>
             </li>
           </ul>
         </motion.div>
